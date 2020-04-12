@@ -1,5 +1,7 @@
+// Express é responsável pelas rotas
 const express = require('express');
 
+// Requisitar váriaveis dos controllers
 const OngController = require('./controller/OngController');
 const IncidentController = require('./controller/IncidentController');
 const ProfileController = require('./controller/ProfileController');
@@ -22,5 +24,5 @@ routes.get('/incidents', IncidentController.index);
 routes.post('/incidents', IncidentController.create);
 routes.delete('/incidents/:id', IncidentController.delete);
 
-
+// exportar rotas
 module.exports = routes;
