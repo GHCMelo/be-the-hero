@@ -3,7 +3,6 @@
     max-width: 1120px;
     height: 100vh;
     margin: 0 auto;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -24,3 +23,11 @@
     margin-bottom: 32px;
 }
 
+.logon-container .made-by{
+    text-align: center;
+    bottom: 10px;
+    width: 100%;
+    max-width: 1120px;
+    position: absolute;
+    color: #737380;
+}

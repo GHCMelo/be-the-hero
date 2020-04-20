@@ -1,9 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import logoImg from '../../assets/logo.svg';
 import { Link, useHistory } from 'react-router-dom';
-import { FiPower, FiTrash2 } from 'react-icons/fi';
+import { FiPower, FiTrash2, FiEdit } from 'react-icons/fi';
 import './styles.css';
 import api from '../../services/api';
+
+//IMG DOG
+import dogImg from '../../assets/dog1.jpg';
 
 export default function Profile(){
     const [incidents, setIncidents] = useState([]);
@@ -21,6 +24,10 @@ export default function Profile(){
             setIncidents(response.data);
         })
     }, [ongId]);
+
+    async function handleEditIncident() {
+        await alert("Você editou com sucesso");
+    }
 
     async function handleDeleteIncident(id) {
         try {
@@ -55,10 +62,11 @@ export default function Profile(){
             </header>
 
             <h1>Casos cadastrados</h1>
-
             <ul>
                 {incidents.map(incidents => (
+                    
                     <li key={incidents.id}>
+                    <img src={dogImg} alt="Teste"/>
                     <strong>CASO:</strong>
                     <p>{incidents.title}</p>
 
@@ -66,11 +74,15 @@ export default function Profile(){
                     <p>{incidents.description}</p>
 
                     <strong>VALOR:</strong>
-                    <p>{Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL'}).format(incidents.value)}</p>
+                    <p className="value">{Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL'}).format(incidents.value)}</p>
+                    
+                    <button className="alter" type="button">
+                        <FiEdit size={20} onClick={() => handleEditIncident()} color="#a8a8b3" />
+                    </button>          
 
-                    <button onClick={() => handleDeleteIncident(incidents.id)} type="button">
+                    <button className="delete" onClick={() => handleDeleteIncident(incidents.id)} type="button">
                         <FiTrash2 size={20} color="#a8a8b3" />
-                    </button>
+                    </button>    
                 </li>
                 ))}
             </ul>

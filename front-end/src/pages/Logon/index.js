@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { FiLogIn } from 'react-icons/fi';
+import { FiLogIn, FiHeart } from 'react-icons/fi';
 import './styles.css';
 import heroesImg from '../../assets/heroes.png';
 import logoImg from '../../assets/logo.svg';
@@ -46,6 +46,10 @@ export default function Logon() {
             </section>
 
             <img src={heroesImg} alt="Heroes" />
+            <div className="made-by">
+                <p>Made with <FiHeart size={16} color="red"/> by Gabriel Melo com grande ajuda da RocketSeat</p>
+            </div>     
         </div>
+        
     );
 }

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import logoImg from '../../assets/logo.svg';
 import { Link, useHistory } from 'react-router-dom';
-import { FiArrowLeft } from 'react-icons/fi';
+import { FiArrowLeft, FiImage } from 'react-icons/fi';
 import './styles.css';
 import api from '../../services/api';
 
@@ -61,6 +61,10 @@ export default function NewIncident() {
                         value={value}
                         onChange={e => setValue(e.target.value)}                        
                     />
+                    <div className="label">
+                        <label For="insertImg"><FiImage size={28} /></label>
+                        <input id="insertImg" type="file"/>
+                    </div>
                     <button className="button" type="submit">Cadastrar</button>
                 </form>
             </div>
