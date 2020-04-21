@@ -61,31 +61,33 @@ export default function Profile(){
                 </button>
             </header>
 
-            <h1>Casos cadastrados</h1>
-            <ul>
-                {incidents.map(incidents => (
-                    
-                    <li key={incidents.id}>
-                    <img src={dogImg} alt="Teste"/>
-                    <strong>CASO:</strong>
-                    <p>{incidents.title}</p>
+            <div className="profile-incidents">
+                <h1>CASOS CADASTRADOS</h1>
+                <ul>
+                    {incidents.map(incidents => (
+                        
+                        <li key={incidents.id}>
+                        <img src={dogImg} alt="Teste"/>
+                        <strong>CASO:</strong>
+                        <p>{incidents.title}</p>
 
-                    <strong>DESCRIÇÃO:</strong>
-                    <p>{incidents.description}</p>
+                        <strong>DESCRIÇÃO:</strong>
+                        <p>{incidents.description}</p>
 
-                    <strong>VALOR:</strong>
-                    <p className="value">{Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL'}).format(incidents.value)}</p>
-                    
-                    <button className="alter" type="button">
-                        <FiEdit size={20} onClick={() => handleEditIncident()} color="#a8a8b3" />
-                    </button>          
+                        <strong>VALOR:</strong>
+                        <p>{Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL'}).format(incidents.value)}</p>
+                        
+                        <button className="alter" type="button">
+                            <FiEdit size={20} onClick={() => handleEditIncident()} color="#a8a8b3" />
+                        </button>          
 
-                    <button className="delete" onClick={() => handleDeleteIncident(incidents.id)} type="button">
-                        <FiTrash2 size={20} color="#a8a8b3" />
-                    </button>    
-                </li>
-                ))}
-            </ul>
+                        <button type="button" className="delete" onClick={() => {if(window.confirm('Are you sure to delete this record?')){ handleDeleteIncident(incidents.id)};}}>
+                            <FiTrash2 size={20} color="#a8a8b3" />
+                        </button>    
+                    </li>
+                    ))}
+                </ul>
+            </div>
         </div>
     );
 }
